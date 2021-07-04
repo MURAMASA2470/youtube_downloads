@@ -22,7 +22,7 @@ def main():
 	format = input('Format(mp3 or mp4): ')
 	url = input('URL: ')
 	if format == 'mp4': 
-		cmd = 'youtube-dl -f mp4 {URL}'.format(URL = url)
+		cmd = 'youtube-dl -f mp4 {URL} --no-check-certificate'.format(URL = url)
 		os.system(cmd)
 	else:
 		dl(url)
