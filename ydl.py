@@ -19,7 +19,7 @@ def mp4to3(filename):
 	os.remove(filename)
 
 def main(): 
-	format = input('フォーマット(mp3 or mp4): ')
+	format = input('Format(mp3 or mp4): ')
 	url = input('URL: ')
 	if format == 'mp4': 
 		cmd = 'youtube-dl -f mp4 {URL}'.format(URL = url)
