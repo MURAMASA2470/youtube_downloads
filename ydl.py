@@ -3,10 +3,12 @@ import ffmpeg
 import sys
 import os
 import glob
+import argparse
 
 def dl(URL):
 	options = {
-		'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio'
+		'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio',
+    'nocheckcertificate:': True
 	}
 	with youtube_dl.YoutubeDL(options) as ydl:
 		ydl.download([URL])
@@ -20,7 +22,27 @@ def mp4to3(filename):
   ffmpeg.run(stream)
   os.remove(filename)
 
+def dl4List(args):
+  try:
+    file = open(args.file, 'r', encoding='UTF-8')
+    urls = file.readlines()
+    for url in urls:
+      dl(url)
+      filenames = glob.glob('./*.m4a')
+      for filename in filenames:
+        mp4to3(filename)
+    file.close()
+  except FileNotFoundError as e:
+    print('[Error] => File Not Found: ', e)
+  finally:
+    sys.exit()
+
 def main():
+  parser = argparse.ArgumentParser()
+  parser.add_argument('-f', '--file', help='Please specify a text file for the URL list.')
+  args = parser.parse_args()
+  if args.file: dl4List(args)
+
 	format = input('Format(mp3 or mp4): ')
 	url = input('URL: ')
 	if format == 'mp4':
