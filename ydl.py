@@ -5,13 +5,15 @@ import os
 import glob
 import argparse
 
-def dl(URL):
-	options = {
-		'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio',
+def dl(url, format):
+  options = {
+    # 'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio',
     'nocheckcertificate:': True
 	}
-	with youtube_dl.YoutubeDL(options) as ydl:
-		ydl.download([URL])
+  if format == 'mp3':
+    options['format'] = 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio'
+  with youtube_dl.YoutubeDL(options) as ydl:
+    ydl.download([url])
 
 def mp4to3(filename):
   root, ext = os.path.splitext(filename)
@@ -43,15 +45,15 @@ def main():
   args = parser.parse_args()
   if args.file: dl4List(args)
 
-	format = input('Format(mp3 or mp4): ')
-	url = input('URL: ')
-	if format == 'mp4':
-		cmd = 'youtube-dl -f mp4 {URL} --no-check-certificate'.format(URL = url)
-		os.system(cmd)
-	else:
-		dl(url)
-		filenames = glob.glob('./*.m4a')
-		for filename in filenames:
-			mp4to3(filename)
+  format = input('Format(mp3 or mp4): ')
+  url = input('URL: ')
+  if format == 'mp4':
+    cmd = 'youtube-dl -f mp4 {URL} --no-check-certificate'.format(URL = url)
+    os.system(cmd)
+  else:
+    dl(url)
+    filenames = glob.glob('./*.m4a')
+    for filename in filenames:
+      mp4to3(filename)
 
 main()
