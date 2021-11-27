@@ -34,7 +34,7 @@ def mp4to3(filename):
 # Batch download
 def dl4List(args):
   try:
-    file = open(args.file, 'r', encoding='UTF-8')
+    file = open(args.list, 'r', encoding='UTF-8')
     urls = file.readlines()
     for url in urls:
       dl(url, args.format)
