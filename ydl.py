@@ -19,6 +19,7 @@ def dl(url, format):
     for filename in filenames:
       mp4to3(filename)
   else:
+    options['format'] = 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4/best'
     youtube_dl.YoutubeDL(options).download([url])
 
 # Conver to mp3
