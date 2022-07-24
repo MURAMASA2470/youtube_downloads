@@ -40,11 +40,11 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 ## How to deal with slow download speed
 
 ```
-wget https://github.com/ytdl-org/youtube-dl/archive/622b87d0fb10a50283b12ecd5304e66dd396809b.zip
+wget https://github.com/ytdl-org/youtube-dl/archive/5f5c127ece74e52aa5b49b6d2941cc0f848d3c36.zip
 
-unzip 622b87d0fb10a50283b12ecd5304e66dd396809b.zip
+unzip 5f5c127ece74e52aa5b49b6d2941cc0f848d3c36.zip
 
-cd youtube-dl-622b87d0fb10a50283b12ecd5304e66dd396809b
+cd youtube-dl-5f5c127ece74e52aa5b49b6d2941cc0f848d3c36
 
 python -m pip uninstall youtube_dl
 python -m pip install .
