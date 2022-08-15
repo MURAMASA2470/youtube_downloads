@@ -40,11 +40,14 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 ## How to deal with slow download speed
 
 ```
-wget https://github.com/ytdl-org/youtube-dl/archive/d231b56717c73ee597d2e077d11b69ed48a1b02d.zip
+// Get the SHA hash of the latest commit from git
+git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40
 
-unzip d231b56717c73ee597d2e077d11b69ed48a1b02d.zip
+wget https://github.com/ytdl-org/youtube-dl/archive/[Enter SHA hash here].zip
 
-cd youtube-dl-d231b56717c73ee597d2e077d11b69ed48a1b02d
+unzip [Enter SHA hash here].zip
+
+cd youtube-dl-[Enter SHA hash here]
 
 python -m pip uninstall youtube_dl
 python -m pip install .
