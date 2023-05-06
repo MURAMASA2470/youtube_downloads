@@ -9,7 +9,7 @@ Download videos or music from Youtube using youtube_dl and ffmpeg
 ## Installation
 
 ```
-python -m pip install youtube_dl ffmpeg
+python -m pip install youtube_dl ffmpeg ffmpeg-python
 ```
 
 
