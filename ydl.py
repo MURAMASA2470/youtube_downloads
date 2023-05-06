@@ -28,7 +28,7 @@ def mp4to3(filename):
   if ext not in ['.m4a']: return
   newname = '%s.mp3' % root
   stream = ffmpeg.input(filename)
-  stream = ffmpeg.output(stream, newname, format='mp3', audio_bitrate=320)
+  stream = ffmpeg.output(stream, newname, format='mp3', audio_bitrate='320k')
   ffmpeg.run(stream)
   os.remove(filename)
 
