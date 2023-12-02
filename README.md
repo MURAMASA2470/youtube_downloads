@@ -41,14 +41,13 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 
 ```
 // Get the SHA hash of the latest commit from git
-git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40
+hash=$(git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40)
 
-wget https://github.com/ytdl-org/youtube-dl/archive/[Enter SHA hash here].zip
+wget https://github.com/ytdl-org/youtube-dl/archive/$hash.zip
 
-unzip [Enter SHA hash here].zip
+unzip -n $hash.zip && cd youtube-dl-$hash
 
-cd youtube-dl-[Enter SHA hash here]
+python -m pip uninstall -y youtube_dl && python -m pip install .
 
-python -m pip uninstall youtube_dl
-python -m pip install .
+cd .. && rm -r youtube-dl-$hash
 ```
