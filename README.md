@@ -39,8 +39,11 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 
 ## How to deal with slow download speed
 
-```
-// Get the SHA hash of the latest commit from git
+### In the case of Mac and Linux
+
+```bash
+# Get the SHA hash of the latest commit from git
+
 hash=$(git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40)
 
 wget https://github.com/ytdl-org/youtube-dl/archive/$hash.zip
@@ -51,3 +54,21 @@ python -m pip uninstall -y youtube_dl && python -m pip install .
 
 cd .. && rm -r youtube-dl-$hash
 ```
+
+### In the case of Windows
+
+```bash
+# Get the SHA hash of the latest commit from git
+
+$hash=$(git ls-remote https://github.com/ytdl-org/youtube-dl.git | Select-Object -First 1).Substring(0, 40)
+
+Invoke-WebRequest -Uri https://github.com/ytdl-org/youtube-dl/archive/$hash.zip -outfile ./youtube-dl-$hash.zip
+
+Expand-Archive -Path .\youtube-dl-$hash.zip -DestinationPath ./ ; cd youtube-dl-$hash
+
+python -m pip uninstall -y youtube_dl ; python -m pip install .
+
+cd .. ; rm -r youtube-dl-$hash
+
+```
+
