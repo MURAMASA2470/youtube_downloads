@@ -16,14 +16,14 @@ python -m pip install youtube_dl ffmpeg ffmpeg-python
 ## Using　
 
 ### Easy to Use
-```
+```bash
 python ./ydl.py
 > Format(mp3 or mp4): "Enter the format you want to convert here"
 > URL: "Enter the URL you want to download here"
 ```
 
 ### Options
-```
+```bash
 usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 
   -h, --help           : show this help message and exit
@@ -38,7 +38,7 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 ```
 
 ### Using Docker
-```
+```bash
 # Get the latest commit hash of the master branch
 hash=$(git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40)
 # Starting Docker...
