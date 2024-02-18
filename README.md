@@ -39,9 +39,10 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 
 ### Using Docker
 ```
+# Get the latest commit hash of the master branch
 hash=$(git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40)
+# Starting Docker...
 docker compose build --build-arg COMMIT_HASH=${hash} && docker compose up -d
-
 ```
 
 ## How to deal with slow download speed
