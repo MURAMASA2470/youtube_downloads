@@ -37,7 +37,16 @@ usage: ydl.py [-h] [-f FORMAT] [-u URI] [-l LIST]
 
 ```
 
+### Using Docker
+```
+hash=$(git ls-remote https://github.com/ytdl-org/youtube-dl.git | head -n 1 | cut -c 1-40)
+docker compose build --build-arg COMMIT_HASH=${hash} && docker compose up -d
+
+```
+
 ## How to deal with slow download speed
+
+If you have built your environment using Docker, you do not need to do this
 
 ### In the case of Mac and Linux
 

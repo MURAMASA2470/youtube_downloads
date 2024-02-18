@@ -1,0 +1,13 @@
+version: '3.7 '
+services:
+   app:
+     restart: always
+     build:
+       context: ./
+       args:
+         COMMIT_HASH: HOGE
+     container_name: python_youtube
+     working_dir: /usr/src/python
+     tty: true
+     volumes:
+       - ./:/usr/src/python
